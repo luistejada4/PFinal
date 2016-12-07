@@ -14,9 +14,12 @@ public class Base extends Container {
 
     public Base(int x, int y, Color c)
     {
+        setLayout(new FlowLayout());
         posX = x;
         posY = y;
         color = c;
+
+        setBounds(posX, posY, 180, 180);
     }
 
     public int getPosX() {
@@ -46,8 +49,9 @@ public class Base extends Container {
     @Override
     public void paint(Graphics g) {
 
+        setLayout(null);
         g.setColor(color);
-        g.fillOval(posX, posY, 150, 150);
+        g.fillRect(0, 0, getWidth(), getHeight());
     }
 
 }
