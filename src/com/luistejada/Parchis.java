@@ -11,6 +11,7 @@ public class Parchis extends JFrame {
 
     private ArrayList<Base> bases = new ArrayList<>();
     private ArrayList<Celda> celdas = new ArrayList<>();
+    private ArrayList<Ficha> fichas = new ArrayList<>();
 
     public Parchis()
     {
@@ -20,21 +21,51 @@ public class Parchis extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        Base baseRoja = new Base(25, 30, Color.RED);
+        JPanel panel = new JPanel();
+
+        panel.setSize(900, 700);
+        panel.setLayout(null);
+
+
+        Base baseRoja = new Base(25, 30, new Color(250, 0, 0));
+        baseRoja.setLayout(new FlowLayout());
+
+        Ficha f = new Ficha(40, 40, Color.BLACK);
+        baseRoja.add(f);
+
         bases.add(baseRoja);
-        add(baseRoja);
+
+
         Base baseAzul = new Base(25, 500, Color.BLUE);
-        add(baseAzul);
         bases.add(baseAzul);
+
         Base baseVerde = new Base(500, 500, Color.GREEN);
         bases.add(baseVerde);
-        add(baseVerde);
+
         Base baseAmarilla = new Base(500, 30, Color.YELLOW);
-        add(baseAmarilla);
+        bases.add(baseAmarilla);
+
+        Base baseCentral = new Base(262, 265, Color.GRAY);
+        bases.add(baseCentral);
+
+        panel.add(baseAzul);
+
+        panel.add(baseRoja);
+
+        panel.add(baseVerde);
+
+        panel.add(baseAmarilla);
+
+        panel.add(baseCentral);
 
         dibujarCeldas();
 
+
+
+
         setVisible(true);
+        panel.setVisible(true);
+
     }
     public void dibujarCeldas() {
 
@@ -49,10 +80,19 @@ public class Parchis extends JFrame {
         {
             if(i < 6)
             {
-                celda = new Celda(400, init, 100, 25, Color.BLACK);
-                add(celda);
-                celdas.add(celda);
-                init -= 25;
+                if(i == 3)
+                {
+                    celda = new Celda(400, init, 100, 25, Color.GREEN);
+                    add(celda);
+                    celdas.add(celda);
+                    init -= 25;
+
+                } else {
+                    celda = new Celda(400, init, 100, 25, Color.BLACK);
+                    add(celda);
+                    celdas.add(celda);
+                    init -= 25;
+                }
             }
             else
             {
@@ -71,10 +111,20 @@ public class Parchis extends JFrame {
 
         for(int i = 0; i < 7; i++)
         {
-            celda = new Celda(init, 402, 25, 100, Color.BLACK);
-            celdas.add(celda);
-            add(celda);
-            init += 25;
+            if(i == 2)
+            {
+                celda = new Celda(init, 402, 25, 100, Color.GREEN);
+                celdas.add(celda);
+                add(celda);
+                init += 25;
+            }
+            else
+            {
+                celda = new Celda(init, 402, 25, 100, Color.BLACK);
+                celdas.add(celda);
+                add(celda);
+                init += 25;
+            }
         }
         init -=25;
 
@@ -99,7 +149,14 @@ public class Parchis extends JFrame {
 
         for(int i = 0; i < 7; i++) {
 
-            if(i < 6) {
+            if(i == 3)
+            {
+                celda = new Celda(init, 205, 25, 100, Color.YELLOW);
+                celdas.add(celda);
+                add(celda);
+                init -= 25;
+            }
+            else if(i < 6) {
                 celda = new Celda(init, 205, 25, 100, Color.BLACK);
                 celdas.add(celda);
                 add(celda);
@@ -122,14 +179,27 @@ public class Parchis extends JFrame {
 
         for(int i = 0; i < 7; i++)
         {
-            celda = new Celda(400, init, 100, 25, Color.BLACK);
-            celdas.add(celda);
-            add(celda);
-            init -= 25;
+            if(i == 2)
+            {
+                celda = new Celda(400, init, 100, 25, Color.YELLOW);
+                celdas.add(celda);
+                add(celda);
+                init -= 25;
+            } else {
+                celda = new Celda(400, init, 100, 25, Color.BLACK);
+                celdas.add(celda);
+                add(celda);
+                init -= 25;
+            }
         }
         init = 30;
 
-        for(int i = 0; i < 8; i++) {
+        celda = new Celda(300, init, 100, 25, Color.BLACK);
+        celdas.add(celda);
+        add(celda);
+        init +=25;
+
+        for(int i = 0; i < 7; i++) {
 
             celda = new Celda(300, init, 100, 25, Color.RED);
             celdas.add(celda);
@@ -141,7 +211,15 @@ public class Parchis extends JFrame {
 
         for(int i = 0; i < 8; i++) {
 
-            if(i < 7) {
+            if(i == 4)
+            {
+                celda = new Celda(200, init, 100, 25, Color.RED);
+                celdas.add(celda);
+                add(celda);
+                init += 25;
+            }
+
+            else if(i < 7) {
 
                 celda = new Celda(200, init, 100, 25, Color.BLACK);
                 celdas.add(celda);
@@ -159,10 +237,19 @@ public class Parchis extends JFrame {
 
         for(int i = 0; i < 8; i++) {
 
-            celda = new Celda(init, 205, 25, 100, Color.BLACK);
-            celdas.add(celda);
-            add(celda);
-            init -= 25;
+            if(i == 3)
+            {
+                celda = new Celda(init, 205, 25, 100, Color.RED);
+                celdas.add(celda);
+                add(celda);
+                init -= 25;
+            } else {
+
+                celda = new Celda(init, 205, 25, 100, Color.BLACK);
+                celdas.add(celda);
+                add(celda);
+                init -= 25;
+            }
         }
 
         init = 25;
